@@ -1,0 +1,8 @@
+language: csharp
+solution: ./TracingSOE/TracingSOE.sln
+install:
+  - nuget restore ./TracingSOE/TracingSOE.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory ./TracingSOE/testrunner
+script:
+  - xbuild /p:Configuration=Release ./TracingSOE/TracingSOE.sln
+  - mono ./TracingSOE/testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./TracingSOE/TestTraceSOE/bin/Release/TestTraceSOE.dll
